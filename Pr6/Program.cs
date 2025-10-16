@@ -94,4 +94,68 @@ namespace GIGACHADGAYDANGEROUS
             return HP > 0;
         }
     }
-}
+    
+    public class Game
+    {
+        private Player player;
+        private int turnCount;
+        private Random random;
+        private List<Enemy> enemies;
+        private List<Enemy> bosses;
+        private List<Weapon> weapons;
+        private List<Armor> armors;
+
+        public Game()
+        {
+            player = new Player();
+            turnCount = 0;
+            random = new Random();
+
+            InitializeEnemies();
+            InitializeBosses();
+            InitializeItems();
+        }
+
+        private void InitializeEnemies()
+        {
+            enemies = new List<Enemy>
+            {
+                new Enemy("Гоблин", 30, 8, 3, critChance: 0.2),
+                new Enemy("Скелет", 25, 10, 2, ignoreDefense: true),
+                new Enemy("Маг", 20, 12, 1, freezeChance: 0.25)
+            };
+        }
+
+        private void InitializeBosses()
+        {
+            bosses = new List<Enemy>
+            {
+                new Enemy("ВВГ (Гоблин)", 60, 12, 4, critChance: 0.3),
+                new Enemy("Ковальский (Скелет)", 63, 13, 3, ignoreDefense: true),
+                new Enemy("Архимаг C++ (Маг)", 36, 19, 1, freezeChance: 0.35),
+                new Enemy("Пестов С-- (Скелет)", 33, 18, 1, ignoreDefense: true, freezeChance: 0.4)
+            };
+        }
+
+        private void InitializeItems()
+        {
+            weapons = new List<Weapon>
+            {
+                new Weapon("Деревянный меч", 8),
+                new Weapon("Стальной меч", 15),
+                new Weapon("Огненный посох", 20),
+                new Weapon("Ледяной кинжал", 12),
+                new Weapon("Топор воина", 18)
+            };
+
+            armors = new List<Armor>
+            {
+                new Armor("Кожаная броня", 5),
+                new Armor("Кольчуга", 10),
+                new Armor("Латные доспехи", 15),
+                new Armor("Магические одежды", 8),
+                new Armor("Драконий доспех", 20)
+            };
+        }
+
+    }
