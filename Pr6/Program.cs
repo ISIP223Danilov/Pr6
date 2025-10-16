@@ -58,4 +58,40 @@ namespace GIGACHADGAYDANGEROUS
             return HP > 0;
         }
     }
+    
+    public class Player
+    {
+        public int MaxHP { get; set; }
+        public int HP { get; set; }
+        public Weapon Weapon { get; set; }
+        public Armor Armor { get; set; }
+        public bool Frozen { get; set; }
+
+        public Player()
+        {
+            MaxHP = 100;
+            HP = 100;
+            Weapon = new Weapon("Кулаки", 5);
+            Armor = new Armor("стринги", 2);
+            Frozen = false;
+        }
+
+        public int TotalAttack => Weapon.Attack;
+        public int TotalDefense => Armor.Defense;
+
+        public void TakeDamage(int damage)
+        {
+            HP = Math.Max(0, HP - damage);
+        }
+
+        public void Heal()
+        {
+            HP = MaxHP;
+        }
+
+        public bool IsAlive()
+        {
+            return HP > 0;
+        }
+    }
 }
